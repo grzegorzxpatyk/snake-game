@@ -16,9 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // to start, and restart the game
     function startGame() {
-        currentSnake.forEach((index) =>
-            squares[index].classList.remove("snake")
+        currentSnake.forEach(
+            (index) => squares[index].classList.remove("snake") //removes the body of a snake
         );
+
+        squares[currentSnake[0]].classList.remove("snake-head"); //removes the head
+
         squares[appleIndex].classList.remove("apple");
         clearInterval(interval);
         score = 0;
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentSnake = [2, 1, 0];
         currentIndex = 0;
         currentSnake.forEach((index) => squares[index].classList.add("snake"));
+        squares[currentSnake[0]].classList.add("snake-head");
         interval = setInterval(moveOutcomes, intervalTime);
     }
 
