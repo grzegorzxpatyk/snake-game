@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    border: none;
+    padding: 1.2rem;
+    border-radius: 4rem;
+    font-size: 2rem;
+}
+
+.grid {
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    margin: 2rem;
+}
+
+.grid div {
+    width: 80px;
+    height: 80px;
+}
+
+.snake {
+    background-color: rgb(44, 133, 44);
+}
+
+.snake-head {
+    background-color: rgb(38, 107, 38);
+}
+
+/* .snake-head::after {
+    content: "";
+    display: block;
+    background: red;
+    width: 10px;
+    height: 30px;
+    transform: translate(35px, -30px);
+} */
+
+.apple {
+    background-color: rgb(216, 39, 39);
+    border-radius: 20%;
+}
+
+.apple::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid rgb(50, 130, 52);
+    border-right: 20px solid transparent;
+    transform: translate(44px, -16px) rotateZ(5deg);
+}
+
+.apple::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 30px solid rgb(50, 130, 52);
+    border-left: 30px solid transparent;
+    transform: translate(12px, -43px);
+}
