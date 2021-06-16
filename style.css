@@ -28,20 +28,22 @@ button {
     padding: 1.2rem;
     border-radius: 4rem;
     font-size: 2rem;
+    outline: none;
 }
 
 .grid {
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     border-style: solid;
     margin: 2rem;
+    outline: 1px solid #333;
 }
 
 .grid div {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 }
 
 .snake {
@@ -84,4 +86,50 @@ button {
     border-top: 30px solid rgb(50, 130, 52);
     border-left: 30px solid transparent;
     transform: translate(12px, -43px);
+}
+
+.game-over-screen {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(255, 0, 0, 0.5);
+    display: none;
+    z-index: 99;
+    position: absolute;
+    font-size: 6rem;
+    color: white;
+    font-family: 'Staatliches', Helvetica, Impact, 'Arial Narrow';
+}
+
+.new-game-screen {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(23, 175, 48, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+    position: absolute;
+    font-size: 6rem;
+    color: white;
+    font-family: 'Staatliches', Helvetica, Impact, 'Arial Narrow';
+}
+
+.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.blur {
+    filter: blur(0.3rem);
+}
+
+h1 > strong {
+    color: #333;
 }

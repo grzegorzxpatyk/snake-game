@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll(".grid div");
     const scoreDisplay = document.querySelector("span");
     const startBtn = document.querySelector(".start");
+    const restartBtn = document.querySelector(".restart");
 
     const width = 10;
     let currentIndex = 0; // so first div in our grid
@@ -14,8 +15,46 @@ document.addEventListener("DOMContentLoaded", () => {
     let intervalTime = 0;
     let interval = 0;
 
+    document.querySelector(".game").classList.toggle("blur");
+
+    // function to toggle display of gameover screen
+
+    // by default new-game-screen should be loaded at DOMContentLoaded, and should dissapear
+    // when the startBtn is clicked.
+    // then the game-over-screen should appear when snake hits walls or itself.
+    // when the restart button is clicked the screen disappears.
+    function gameOverScreen() {
+        if (currentSnake !== null) {
+            document
+                .querySelector(".game-over-screen")
+                .classList.toggle("visible");
+            document.querySelector(".game").classList.toggle("blur");
+        }
+
+        // if (squares.forEach((square) => squares[square].classList.contains("snake"))) {
+        //     console.log("grid does not contain the .snake class");
+        // } else {
+        //     document
+        //         .querySelector(".game-over-screen")
+        //         .classList.toggle("visible");
+        //     document.querySelector(".game").classList.toggle("blur");
+        // }
+    }
+
     // to start, and restart the game
     function startGame() {
+        if (
+            !document
+                .querySelector(".new-game-screen")
+                .classList.contains("hidden")
+        ) {
+            document.querySelector(".new-game-screen").classList.add("hidden");
+            document.querySelector(".game").classList.toggle("blur");
+        } else {
+            gameOverScreen();
+        }
+        // document.querySelector(".game").classList.toggle("blur");
+
         currentSnake.forEach(
             (index) => squares[index].classList.remove("snake") //removes the body of a snake
         );
@@ -30,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         direction = 1;
         scoreDisplay.innerText = score;
-        intervalTime = 1000;
+        intervalTime = 600;
         currentSnake = [2, 1, 0];
         currentIndex = 0;
         currentSnake.forEach((index) => squares[index].classList.add("snake"));
@@ -40,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // function that deals with ALL the move outcomes of the snake
     function moveOutcomes() {
-        //deals with snake hitting walls and hitting self
+        //deals with snake hitting walls and hitting self - game over
         if (
             (currentSnake[0] + width >= width * width && direction === width) || // if snake hits bottom
             (currentSnake[0] % width === width - 1 && direction === 1) || //if snake hits right wall
@@ -48,8 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
             (currentSnake[0] - width < 0 && direction === -width) || // if snake hits the top
             squares[currentSnake[0] + direction].classList.contains("snake") //if snake goes into itself
         ) {
+            gameOverScreen();
             return clearInterval(interval); //this will clear the interval if any of the above happen
         }
+
+        //outcome of those ^^ is GAME OVER
 
         const tail = currentSnake.pop(); // removes last ite of the array and shows it
         squares[tail].classList.remove("snake"); // removes class of snake from the TAIL
@@ -98,4 +140,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("keyup", control);
     startBtn.addEventListener("click", startGame);
+    restartBtn.addEventListener("click", startGame);
 });
