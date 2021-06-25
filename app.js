@@ -85,17 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
             gameOverScreen();
             return clearInterval(interval); //this will clear the interval if any of the above happen
         }
-
         //outcome of those ^^ is GAME OVER
 
         const tail = currentSnake.pop(); // removes last ite of the array and shows it
         squares[tail].classList.remove('snake'); // removes class of snake from the TAIL
         squares[currentSnake[0]].classList.remove('snake-head');
-        squares[currentSnake[0]].classList.remove('right');
-        squares[currentSnake[0]].classList.remove('left');
-        squares[currentSnake[0]].classList.remove('up');
-        squares[currentSnake[0]].classList.remove('down');
-        currentSnake.unshift(currentSnake[0] + direction); // gives direction to the head of the array
+
+        // erasing the direction class from every div inside grid
+        squares.forEach(index => index.classList.remove('right'));
+        squares.forEach(index => index.classList.remove('left'));
+        squares.forEach(index => index.classList.remove('up'));
+        squares.forEach(index => index.classList.remove('down'));
+        
+        // gives direction to the head of the array
+        currentSnake.unshift(currentSnake[0] + direction); 
 
         //deals with snake hitting APPLE
         if (squares[currentSnake[0]].classList.contains('apple')) {

@@ -93,6 +93,7 @@ button {
     background-color: rgb(38, 107, 38);
 }
 
+/* Snake's eye */
 .snake-head::before {
     content: "";
     display: block;
@@ -130,7 +131,6 @@ button {
 
 .apple {
     background-color: rgb(216, 39, 39);
-    border-radius: 20%;
 }
 
 .apple::before {
