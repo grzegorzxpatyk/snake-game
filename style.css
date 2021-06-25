@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 body {
     margin: 0;
@@ -9,11 +9,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 h1 {
-    font-family: 'Staatliches', cursive;
+    font-family: "Staatliches", cursive;
+    text-align: center;
 }
 
 .game {
@@ -29,7 +30,33 @@ button {
     border-radius: 4rem;
     font-size: 2rem;
     outline: none;
+    background-color: rgb(194, 190, 190);
+    /* background: linear-gradient(15deg, rgb(207, 72, 207), rgb(60, 112, 195)); */
+    /* animation: hue-rotation 5s infinite; */
+    /* transition: 1s; */
 }
+
+@keyframes hue-rotation {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        filter: hue-rotate(90sdeg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* button:hover {
+    filter: hue-rotate(360deg);
+} */
 
 .grid {
     width: 600px;
@@ -46,6 +73,18 @@ button {
     height: 60px;
 }
 
+@media (max-width: 640px) {
+    .grid {
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .grid div {
+        width: 8vw;
+        height: 8vw;
+    }
+}
+
 .snake {
     background-color: rgb(44, 133, 44);
 }
@@ -54,14 +93,40 @@ button {
     background-color: rgb(38, 107, 38);
 }
 
-/* .snake-head::after {
+.snake-head::before {
+    content: "";
+    display: block;
+    background: rgb(0, 0, 0);
+    width: 10px;
+    height: 10px;
+    transform: translate(300%, 150%) rotateZ(90deg);
+}
+
+/* Snake's tongue */
+.snake-head::after {
     content: "";
     display: block;
     background: red;
     width: 10px;
     height: 30px;
-    transform: translate(35px, -30px);
-} */
+    transform: translate(600%, 50%) rotateZ(90deg);
+}
+
+.right {
+    transform: rotate(0deg);
+}
+
+.left {
+    transform: rotate(0deg) scaleX(-1);
+}
+
+.up {
+    transform: rotate(270deg);
+}
+
+.down {
+    transform: rotate(90deg);
+}
 
 .apple {
     background-color: rgb(216, 39, 39);
@@ -97,7 +162,7 @@ button {
     position: absolute;
     font-size: 6rem;
     color: white;
-    font-family: 'Staatliches', Helvetica, Impact, 'Arial Narrow';
+    font-family: "Staatliches", Helvetica, Impact, "Arial Narrow";
 }
 
 .new-game-screen {
@@ -112,7 +177,7 @@ button {
     position: absolute;
     font-size: 6rem;
     color: white;
-    font-family: 'Staatliches', Helvetica, Impact, 'Arial Narrow';
+    font-family: "Staatliches", Helvetica, Impact, "Arial Narrow";
 }
 
 .visible {
@@ -124,6 +189,8 @@ button {
 
 .hidden {
     display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .blur {
@@ -132,4 +199,9 @@ button {
 
 h1 > strong {
     color: #333;
+}
+
+.score {
+    font-size: 2rem;
+    font-family: "Staatliches", Helvetica, Impact, "Arial Narrow";
 }
