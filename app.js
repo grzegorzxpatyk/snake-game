@@ -1,9 +1,8 @@
-import { exampleArr } from './modules/exampleStorage.js';
+import { exampleArr } from './exampleStorage.js';
 
+console.log(exampleArr);
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(exampleArr);
-
     const squares = document.querySelectorAll('.grid div');
     const scoreDisplay = document.querySelector('.score .score-display');
     const scoreDisplayGameOver = document.querySelector(
