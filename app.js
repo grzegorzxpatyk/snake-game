@@ -1,4 +1,4 @@
-import { exampleArr } from './exampleStorage.js';
+import { exampleArr } from './modules/exampleStorage.js';
 
 console.log(exampleArr);
 
